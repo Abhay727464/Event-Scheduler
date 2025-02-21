@@ -1,0 +1,70 @@
+/* EventList.css */
+.event-list {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-family: Arial, sans-serif;
+}
+
+.event-list h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.event-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  transition: background-color 0.2s ease;
+}
+
+.event-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.event-list li span {
+  font-size: 16px;
+  color: #333;
+}
+
+.description{
+  font-size: 18px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+.date{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+.event-list button {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.event-list button:hover {
+  background-color: #cc0000;
+}
