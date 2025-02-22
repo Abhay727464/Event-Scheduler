@@ -19,7 +19,6 @@ A React-based event scheduler application that allows users to view a calendar, 
 - **React**: Frontend library for building user interfaces.
 - **Material-UI (MUI)**: UI components for buttons, icons, and popovers.
 - **date-fns**: Date utility library for formatting and manipulating dates.
-- **Framer Motion**: Animation library for smooth transitions.
 - **LocalStorage**: Persists events in the browser for a seamless user experience.
 
 ---
