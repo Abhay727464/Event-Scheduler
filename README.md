@@ -28,8 +28,8 @@ A React-based event scheduler application that allows users to view a calendar, 
 **Clone the repository**:
 
 ```bash
-git clone https://github.com/your-username/event-scheduler.git
-cd event-scheduler
+git clone https://github.com/Abhi727464/Event-Scheduler.git
+cd Event-Scheduler
 
 npm install
 npm start
