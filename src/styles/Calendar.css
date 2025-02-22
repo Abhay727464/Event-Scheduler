@@ -60,8 +60,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-/* min-width: 150px; */
-padding: 5px 20px;
+  padding: 5px 20px;
  
   font-size: 18px;
   display: flex;
@@ -115,12 +114,16 @@ padding: 5px 20px;
 }
 
 .event {
-  background-color: #e3f2fd;
+  background-color: #e9f7ef;
   border-radius: 3px;
   font-size: 0.9em;
-  color: #1976d2;
+  color: #27ae60;
   position: absolute;
   bottom: 4px;
+  width: 70px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 @media (max-width: 768px) {
@@ -129,5 +132,7 @@ padding: 5px 20px;
   }
   .event {
     bottom: 0;
+    width: 30px;
+    font-size: 10px;
   }
 }

@@ -6,15 +6,12 @@ import { Popover, TextField, Button } from '@mui/material';
 import './App.css';
 
 const App = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(() => {
+    return JSON.parse(localStorage.getItem('events')) || [];
+  });
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [eventDescription, setEventDescription] = useState('');
-
-  useEffect(() => {
-    const savedEvents = JSON.parse(localStorage.getItem('events')) || [];
-    setEvents(savedEvents);
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('events', JSON.stringify(events));
@@ -33,9 +30,8 @@ const App = () => {
       console.error('Invalid date:', day);
       return;
     }
-
     setSelectedDate(day);
-    setAnchorEl(document.getElementById('calendar-day-' + format(day, 'd')));
+    setAnchorEl(document.getElementById(`calendar-day-${format(day, 'yyyy-MM-dd')}`));
   };
 
   const handleClosePopover = () => {
@@ -52,26 +48,27 @@ const App = () => {
     handleClosePopover();
   };
 
+  const handleEditEvent = (id, newDescription) => {
+    setEvents(
+      events.map((event) =>
+        event.id === id ? { ...event, description: newDescription } : event
+      )
+    );
+  };
+
   return (
     <div className="App">
       <h1 className="event-heading">Event Scheduler</h1>
       <Calendar events={events} onDayClick={handleDayClick} />
-      <EventList events={events} onDeleteEvent={handleDeleteEvent} />
-
+      <EventList events={events} onDeleteEvent={handleDeleteEvent} onEditEvent={handleEditEvent} />
       <Popover
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}
         onClose={handleClosePopover}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
-        <div className='popover'>
+        <div className="popover">
           <TextField
             label="Event Description"
             value={eventDescription}

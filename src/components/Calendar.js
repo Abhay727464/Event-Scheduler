@@ -6,21 +6,21 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 const Calendar = ({ events, onDayClick }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [slideDirection, setSlideDirection] = useState(''); // Track slide direction
+  const [slideDirection, setSlideDirection] = useState('');
 
   const nextMonth = () => {
-    setSlideDirection('slide-left'); // Set animation direction
+    setSlideDirection('slide-left');
     setTimeout(() => {
       setCurrentDate(addMonths(currentDate, 1));
-      setSlideDirection(''); // Reset animation after transition
-    }, 300); // Match the duration of the CSS transition
+      setSlideDirection('');
+    }, 300);
   };
 
   const prevMonth = () => {
-    setSlideDirection('slide-right'); // Set animation direction
+    setSlideDirection('slide-right');
     setTimeout(() => {
       setCurrentDate(subMonths(currentDate, 1));
-      setSlideDirection(''); // Reset animation after transition
+      setSlideDirection('');
     }, 300);
   };
 
@@ -31,7 +31,6 @@ const Calendar = ({ events, onDayClick }) => {
 
   const days = eachDayOfInterval({ start: startDate, end: endDate });
 
-  // Weekday names (Sun, Mon, Tue, etc.)
   const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
@@ -42,7 +41,6 @@ const Calendar = ({ events, onDayClick }) => {
         <button onClick={nextMonth}><ArrowCircleRightIcon /></button>
       </div>
 
-      {/* Weekday Names Row */}
       <div className="weekdays">
         {weekdayNames.map((day, index) => (
           <div key={index} className="weekday">
@@ -51,13 +49,12 @@ const Calendar = ({ events, onDayClick }) => {
         ))}
       </div>
 
-      {/* Calendar Grid with Animation */}
       <div className="grid-container">
         <div className={`grid ${slideDirection}`}>
           {days.map((day, i) => (
             <div
               key={i}
-              id={`calendar-day-${format(day, 'd')}`} // Add unique ID
+              id={`calendar-day-${format(day, 'yyyy-MM-dd')}`}
               className={`day ${isSameMonth(day, monthStart) ? '' : 'outside'}`}
               onClick={() => onDayClick(day)}
             >
